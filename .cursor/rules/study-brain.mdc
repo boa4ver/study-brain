@@ -7,6 +7,9 @@ alwaysApply: false
 - **study-brain** - Turn your own course material into study materials that match how you will actually be tested - reviewers, practice tests with distractor analysis, exam-shaped worked examples, and gradeable flashcards. Use when a student asks to study, review, prepare, or cram for a specific test, quiz, exam, or lesson; asks for practice questions, a mock test, a reviewer, a study guide, flashcards, or a cheat sheet; asks to be quizzed on material; or hands over slides, notes, a syllabus, a past paper, or a textbook chapter and wants something to study from. Also use when reviewing a completed practice attempt to decide what to drill next.
   Read `skills/study-brain/SKILL.md` before acting.
 
+- **study-brain-classroom** - Import Google Classroom announcements, assignments, and materials into the notes vault as inbox notes, verify the import actually worked, and apply each post to the right subject note. Use before any study work that depends on current course material, when a student asks what was posted or assigned, when checking for new announcements or deadlines, or when Classroom material seems to be missing or out of date.
+  Read `skills/study-brain-classroom/SKILL.md` before acting.
+
 - **study-brain-init** - Set up study-brain in one command - scaffold the study site, point it at a notes folder, choose what publishes, and install the governing CLAUDE.md and AGENTS.md. Use when a student is starting with study-brain for the first time, asks to set it up, install it, get started, or scaffold the site, or wants their notes folder configured for studying.
   Read `skills/study-brain-init/SKILL.md` before acting.
 

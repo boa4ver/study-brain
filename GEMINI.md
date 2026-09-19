@@ -16,6 +16,12 @@ Turn your own course material into study materials that match how you will actua
 
 Instructions: `skills/study-brain/SKILL.md` - read it in full before acting on it.
 
+### study-brain-classroom
+
+Import Google Classroom announcements, assignments, and materials into the notes vault as inbox notes, verify the import actually worked, and apply each post to the right subject note. Use before any study work that depends on current course material, when a student asks what was posted or assigned, when checking for new announcements or deadlines, or when Classroom material seems to be missing or out of date.
+
+Instructions: `skills/study-brain-classroom/SKILL.md` - read it in full before acting on it.
+
 ### study-brain-init
 
 Set up study-brain in one command - scaffold the study site, point it at a notes folder, choose what publishes, and install the governing CLAUDE.md and AGENTS.md. Use when a student is starting with study-brain for the first time, asks to set it up, install it, get started, or scaffold the site, or wants their notes folder configured for studying.
