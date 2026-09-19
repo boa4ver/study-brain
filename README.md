@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#install"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code" /></a>
+  <a href="#setup"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code" /></a>
   <a href="#other-agents"><img src="https://img.shields.io/badge/Codex_CLI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="Codex CLI" /></a>
   <a href="#other-agents"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini CLI" /></a>
   <a href="#other-agents"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" /></a>
@@ -29,6 +29,21 @@ Point it at your slides, past papers, and homework. Get back a reviewer, a
 practice test whose answer key explains every wrong option, worked examples that
 don't give away their own answers, and a plan for what to drill next.
 
+## Features
+
+- **Reviewers and study guides** built from your real sources, not a summary of them
+- **Practice tests in your exam's actual format** - MCQ paper gets MCQ practice with real traps
+- **Answer keys that explain every distractor** - the wrong option you were tempted by is the lesson
+- **Exam-shaped worked examples** - neutral facts, the judgment left to you, the trap named afterwards
+- **Gradeable flashcards** with spaced repetition (Leitner, 0/1/3/7/21 days)
+- **Tells you what to drill next** from which wrong answers you picked, not just your score
+- **Printable PDFs** in one clean house format, using the Chrome you already have
+- **A deployable study site** from a folder of markdown, with an opt-in publish allowlist
+- **`CLAUDE.md` + `AGENTS.md` templates** so the standards apply to every session in your notes folder
+- **One-command setup** - `study-brain-init` scaffolds the lot
+- **Publishing is opt-in at every step** - allowlist starts empty, deploy starts off, nothing leaks by default
+- **Never invents a date, a format, or a points value** - unknown stays `TBD`
+
 ## Requirements
 
 study-brain builds on an Obsidian vault kept current by
@@ -46,36 +61,67 @@ machine, so it's your call, not a side effect of running setup.
 
 Separate project, separately maintained, MIT like this one.
 
-## Features
+## Setup
 
-- 📋 **Reviewers and study guides** built from your real sources, not a summary of them
-- 📝 **Practice tests in your exam's actual format** - MCQ paper gets MCQ practice with real traps
-- 🎯 **Answer keys that explain every distractor** - the wrong option you were tempted by is the lesson
-- 🧮 **Exam-shaped worked examples** - neutral facts, the judgment left to you, the trap named afterwards
-- 🃏 **Gradeable flashcards** with spaced repetition (Leitner, 0/1/3/7/21 days)
-- 📊 **Tells you what to drill next** from which wrong answers you picked, not just your score
-- 📄 **Printable PDFs** in one clean house format, using the Chrome you already have
-- 🌐 **A deployable study site** from a folder of markdown, with an opt-in publish allowlist
-- 📁 **`CLAUDE.md` + `AGENTS.md` templates** so the standards apply to every session in your notes folder
-- ⚡ **One-command setup** - `study-brain-init` scaffolds the lot
-- 🔒 **Publishing is opt-in at every step** - allowlist starts empty, deploy starts off, nothing leaks by default
-- 📌 **Never invents a date, a format, or a points value** - unknown stays `TBD`
+**1. Install the requirement**
 
-## Install
+```
+/plugin marketplace add eugeniughelbur/obsidian-second-brain
+/plugin install obsidian-second-brain
+```
 
-```bash
+**2. Install study-brain**
+
+```
 /plugin marketplace add boa4ver/study-brain
 /plugin install study-brain
 ```
 
-Then set everything up in one command:
+**3. Run setup**
 
 ```
 /study-brain-init
 ```
 
-Or just ask - *"help me study for Friday's chapter 8 quiz, here are the
-slides"* - and the right skill loads itself.
+It asks four things - where your notes are, which folders may be published,
+where the site should go, and whether to add the `CLAUDE.md` / `AGENTS.md`
+templates. Then it scaffolds the site, writes the sync config, installs
+dependencies, and runs a first sync that publishes nothing.
+
+**4. Look at it**
+
+```bash
+cd ~/study-brain-site
+npm run dev
+```
+
+### What setup will not do
+
+- **It never guesses what to publish.** An empty answer means nothing
+  publishes, and that's a valid way to finish.
+- **It never turns on deploy.** The generated config has `deploy: false`.
+  Turning it on is a separate, deliberate act, after you've run a sync and
+  looked at what actually landed.
+- **It never overwrites.** An existing project folder or an existing
+  `CLAUDE.md` stops that step rather than replacing your work.
+- **It never installs anything silently.** Missing dependency? It asks.
+
+### Non-interactive
+
+```bash
+node init.mjs --notes=~/Documents/Notes --project=~/study-brain-site \
+  --include="Maths,History" --templates
+```
+
+| Flag | Effect |
+|---|---|
+| `--notes=` | The notes folder. Must exist. |
+| `--project=` | Where the site is created. Won't overwrite. |
+| `--include=` | The allowlist, comma separated. |
+| `--templates` | Copy the templates into the notes folder, skipping any that exist. |
+| `--install-deps` | Install obsidian-second-brain without prompting. |
+| `--no-install` | Skip `npm install`. |
+| `--yes` | Take defaults instead of prompting. |
 
 ## Other agents
 
