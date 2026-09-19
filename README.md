@@ -47,7 +47,7 @@ went wrong first.
 ## Install
 
 ```bash
-git clone https://github.com/<you>/studykit ~/.claude/skills/studykit
+git clone https://github.com/boa4ver/studykit ~/.claude/skills/studykit
 ```
 
 Then in Claude Code:
