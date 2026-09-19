@@ -1,4 +1,4 @@
-# studykit
+# study-brain
 
 Study materials built from your own course material, shaped to the test you are
 actually sitting.
@@ -11,23 +11,23 @@ the same files.
 
 ## Skills
 
-### studykit
+### study-brain
 
 Turn your own course material into study materials that match how you will actually be tested - reviewers, practice tests with distractor analysis, exam-shaped worked examples, and gradeable flashcards. Use when a student asks to study, review, prepare, or cram for a specific test, quiz, exam, or lesson; asks for practice questions, a mock test, a reviewer, a study guide, flashcards, or a cheat sheet; asks to be quizzed on material; or hands over slides, notes, a syllabus, a past paper, or a textbook chapter and wants something to study from. Also use when reviewing a completed practice attempt to decide what to drill next.
 
-Instructions: `skills/studykit/SKILL.md` - read it in full before acting on it.
+Instructions: `skills/study-brain/SKILL.md` - read it in full before acting on it.
 
-### studykit-init
+### study-brain-init
 
-Set up studykit in one command - scaffold the study site, point it at a notes folder, choose what publishes, and install the governing CLAUDE.md and AGENTS.md. Use when a student is starting with studykit for the first time, asks to set it up, install it, get started, or scaffold the site, or wants their notes folder configured for studying.
+Set up study-brain in one command - scaffold the study site, point it at a notes folder, choose what publishes, and install the governing CLAUDE.md and AGENTS.md. Use when a student is starting with study-brain for the first time, asks to set it up, install it, get started, or scaffold the site, or wants their notes folder configured for studying.
 
-Instructions: `skills/studykit-init/SKILL.md` - read it in full before acting on it.
+Instructions: `skills/study-brain-init/SKILL.md` - read it in full before acting on it.
 
-### studykit-site
+### study-brain-site
 
 Build and deploy a personal study website from a folder of markdown notes - subject pages, a practice-test runner, flashcard review, deadlines, and analytics, deployed to Vercel. Use when a student wants their notes as a website or web app, wants to study or practice on their phone, asks to deploy or host their notes, wants a study dashboard, or wants their Obsidian vault turned into a site. Also use to set up the sync daemon that mirrors a vault folder to the site and redeploys on change.
 
-Instructions: `skills/studykit-site/SKILL.md` - read it in full before acting on it.
+Instructions: `skills/study-brain-site/SKILL.md` - read it in full before acting on it.
 
 ## The rules these skills share
 

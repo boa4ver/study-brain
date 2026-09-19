@@ -1,16 +1,16 @@
 {
-  "name": "studykit",
-  "description": "studykit - study materials built from your own course material.",
+  "name": "study-brain",
+  "description": "study-brain - study materials built from your own course material.",
   "owner": {
     "name": "boa4ver"
   },
   "plugins": [
     {
-      "name": "studykit",
+      "name": "study-brain",
       "source": "./",
       "description": "Turn your own course material into study materials shaped to the test you are actually sitting.",
       "version": "0.2.0",
-      "homepage": "https://github.com/boa4ver/studykit",
+      "homepage": "https://github.com/boa4ver/study-brain",
       "license": "MIT",
       "category": "productivity",
       "keywords": ["study", "exam-prep", "flashcards", "practice-test", "students"]

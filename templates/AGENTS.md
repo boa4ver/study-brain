@@ -1,6 +1,6 @@
 # Academic standards for this folder
 
-> Template shipped with [studykit](https://github.com/boa4ver/studykit).
+> Template shipped with [study-brain](https://github.com/boa4ver/study-brain).
 > Copy it to the root of your notes folder and edit the bracketed parts.
 > This file governs *principles* - how academic work has to be done here. It
 > applies to every session in this folder, not only ones that invoke a skill.

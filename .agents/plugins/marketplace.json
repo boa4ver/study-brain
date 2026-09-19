@@ -1,14 +1,14 @@
 {
-  "name": "studykit",
+  "name": "study-brain",
   "interface": {
-    "displayName": "studykit"
+    "displayName": "study-brain"
   },
   "plugins": [
     {
-      "name": "studykit",
+      "name": "study-brain",
       "source": {
         "source": "url",
-        "url": "https://github.com/boa4ver/studykit.git"
+        "url": "https://github.com/boa4ver/study-brain.git"
       },
       "policy": {
         "installation": "AVAILABLE"

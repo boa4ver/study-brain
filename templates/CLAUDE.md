@@ -1,6 +1,6 @@
 # Operating manual for this notes folder
 
-> Template shipped with [studykit](https://github.com/boa4ver/studykit).
+> Template shipped with [study-brain](https://github.com/boa4ver/study-brain).
 > Copy it to the root of your notes folder and fill in the bracketed parts.
 > This file governs *operations* - where things live, how notes are formatted,
 > what publishes. Principles live in `AGENTS.md`. Where the two disagree, this
@@ -36,7 +36,7 @@ updated: [YYYY-MM-DD]
 ```
 
 Subject index notes additionally carry `exams:` and `tasks:`. If you are running
-the studykit site, its full schema is in `site/references/content-schema.md` -
+the study-brain site, its full schema is in `site/references/content-schema.md` -
 match it exactly, because the site reads these keys and ignores everything else.
 
 ## Folder map

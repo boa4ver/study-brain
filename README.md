@@ -14,12 +14,12 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="License: MIT" />
-  <img src="https://img.shields.io/github/stars/boa4ver/studykit?style=for-the-badge&color=yellow" alt="Stars" />
+  <img src="https://img.shields.io/github/stars/boa4ver/study-brain?style=for-the-badge&color=yellow" alt="Stars" />
   <img src="https://img.shields.io/badge/skills-3-7C3AED?style=for-the-badge" alt="3 skills" />
   <img src="https://img.shields.io/badge/tests-23_passing-green?style=for-the-badge" alt="23 tests passing" />
 </p>
 
-# studykit
+# study-brain
 
 **An agent plugin that turns your own course material into study materials
 shaped to the test you're actually sitting.** Works with Claude Code, Codex CLI,
@@ -28,6 +28,23 @@ Gemini CLI, Cursor, and anything that reads `AGENTS.md`.
 Point it at your slides, past papers, and homework. Get back a reviewer, a
 practice test whose answer key explains every wrong option, worked examples that
 don't give away their own answers, and a plan for what to drill next.
+
+## Requirements
+
+study-brain builds on an Obsidian vault kept current by
+[**obsidian-second-brain**](https://github.com/eugeniughelbur/obsidian-second-brain).
+Install that first:
+
+```
+/plugin marketplace add eugeniughelbur/obsidian-second-brain
+/plugin install obsidian-second-brain
+```
+
+`/study-brain-init` checks for it and offers to install it if it's missing. It
+asks rather than doing it silently - that's someone else's code going onto your
+machine, so it's your call, not a side effect of running setup.
+
+Separate project, separately maintained, MIT like this one.
 
 ## Features
 
@@ -40,21 +57,21 @@ don't give away their own answers, and a plan for what to drill next.
 - 📄 **Printable PDFs** in one clean house format, using the Chrome you already have
 - 🌐 **A deployable study site** from a folder of markdown, with an opt-in publish allowlist
 - 📁 **`CLAUDE.md` + `AGENTS.md` templates** so the standards apply to every session in your notes folder
-- ⚡ **One-command setup** - `studykit-init` scaffolds the lot
+- ⚡ **One-command setup** - `study-brain-init` scaffolds the lot
 - 🔒 **Publishing is opt-in at every step** - allowlist starts empty, deploy starts off, nothing leaks by default
 - 📌 **Never invents a date, a format, or a points value** - unknown stays `TBD`
 
 ## Install
 
 ```bash
-/plugin marketplace add boa4ver/studykit
-/plugin install studykit
+/plugin marketplace add boa4ver/study-brain
+/plugin install study-brain
 ```
 
 Then set everything up in one command:
 
 ```
-/studykit-init
+/study-brain-init
 ```
 
 Or just ask - *"help me study for Friday's chapter 8 quiz, here are the
@@ -70,7 +87,7 @@ the repo and each agent picks them up from the file it already looks for:
 | **Claude Code** | `.claude-plugin/` + `skills/` |
 | **Codex CLI** | `AGENTS.md`, and `.agents/skills/` natively |
 | **Gemini CLI** | `GEMINI.md` |
-| **Cursor** | `.cursor/rules/studykit.mdc` |
+| **Cursor** | `.cursor/rules/study-brain.mdc` |
 | **OpenCode / Zed / Amp** | `AGENTS.md` |
 
 Every one of those is generated from `skills/` by
@@ -90,18 +107,18 @@ recovered from scrap"* has already made the only decision the question exists to
 test. You read it, you understand it, and you still can't do the real problem,
 because the real problem never tells you which line is a deduction.
 
-studykit is a set of rules against that. Every rule is here because it went
+study-brain is a set of rules against that. Every rule is here because it went
 wrong first.
 
 ## The skills
 
 | Skill | What it does |
 |---|---|
-| **`studykit`** | The study-material skill. Reviewers, practice tests, worked examples, flashcards, and what to drill next. |
-| **`studykit-site`** | Turns a folder of notes into a deployed study site. |
-| **`studykit-init`** | One-command setup for both. |
+| **`study-brain`** | The study-material skill. Reviewers, practice tests, worked examples, flashcards, and what to drill next. |
+| **`study-brain-site`** | Turns a folder of notes into a deployed study site. |
+| **`study-brain-init`** | One-command setup for both. |
 
-### studykit
+### study-brain
 
 - **Builds a source packet before generating anything**, and tells you what it
   opened and what it couldn't. A polished partial reviewer is more dangerous
@@ -120,7 +137,7 @@ wrong first.
 - **Respects stated exclusions.** Out-of-scope material isn't harmless filler -
   it burns study hours that have a deadline attached.
 
-### studykit-site
+### study-brain-site
 
 A local daemon watches your notes folder, mirrors **only the folders you
 allowlist** into the site, and redeploys.
@@ -150,16 +167,6 @@ change when something goes wrong. `AGENTS.md` ends with an empty section for
 your own rules, added with the evidence attached. That section is what makes it
 yours - a rule without its reason gets deleted by the next person who finds it
 inconvenient.
-
-## Pairs with obsidian-second-brain
-
-If you keep notes in Obsidian, [**obsidian-second-brain**](https://github.com/eugeniughelbur/obsidian-second-brain)
-is the natural companion. It handles the vault as persistent memory - semantic
-search, notes that rewrite themselves as things change, scheduled maintenance.
-studykit handles what happens when there's a test on Friday.
-
-Same plain-markdown vault, neither requires the other. Separate project,
-separately maintained, MIT like this one.
 
 ## Use
 
@@ -199,11 +206,11 @@ upgrade if you have an integration set up.
 
 ```
 .claude-plugin/plugin.json          the plugin manifest
-skills/studykit/                    the study-material skill
-skills/studykit-site/               the study-site skill
+skills/study-brain/                    the study-material skill
+skills/study-brain-site/               the study-site skill
   template/                         the Next.js app
   scripts/                          sync library, one-shot sync, watcher
-skills/studykit-init/               one-command setup
+skills/study-brain-init/               one-command setup
 templates/                          CLAUDE.md and AGENTS.md for your notes folder
 ```
 

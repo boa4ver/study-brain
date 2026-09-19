@@ -37,7 +37,7 @@ async function loadSkills() {
 }
 
 function dispatcher(skills, agentNote) {
-  return `# studykit
+  return `# study-brain
 
 Study materials built from your own course material, shaped to the test you are
 actually sitting.
@@ -108,9 +108,9 @@ await symlink("../skills", join(agentsDir, "skills"), "dir");
 const cursorRules = join(ROOT, ".cursor", "rules");
 await mkdir(cursorRules, { recursive: true });
 await writeFile(
-  join(cursorRules, "studykit.mdc"),
+  join(cursorRules, "study-brain.mdc"),
   `---
-description: studykit - build study materials from the student's own course material
+description: study-brain - build study materials from the student's own course material
 globs:
 alwaysApply: false
 ---
@@ -128,7 +128,7 @@ for (const dir of [".cursor-plugin", ".codex-plugin"]) {
   await mkdir(join(ROOT, dir), { recursive: true });
   await writeFile(
     join(ROOT, dir, "plugin.json"),
-    JSON.stringify({ ...base, displayName: "studykit" }, null, 2) + "\n"
+    JSON.stringify({ ...base, displayName: "study-brain" }, null, 2) + "\n"
   );
 }
 
@@ -137,11 +137,11 @@ await writeFile(
   join(agentsDir, "plugins", "marketplace.json"),
   JSON.stringify(
     {
-      name: "studykit",
-      interface: { displayName: "studykit" },
+      name: "study-brain",
+      interface: { displayName: "study-brain" },
       plugins: [
         {
-          name: "studykit",
+          name: "study-brain",
           source: { source: "url", url: `${base.repository}.git` },
           policy: { installation: "AVAILABLE" },
           category: "productivity",
