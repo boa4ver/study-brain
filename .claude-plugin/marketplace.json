@@ -1,0 +1,19 @@
+{
+  "name": "studykit",
+  "description": "studykit - study materials built from your own course material.",
+  "owner": {
+    "name": "boa4ver"
+  },
+  "plugins": [
+    {
+      "name": "studykit",
+      "source": "./",
+      "description": "Turn your own course material into study materials shaped to the test you are actually sitting.",
+      "version": "0.2.0",
+      "homepage": "https://github.com/boa4ver/studykit",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["study", "exam-prep", "flashcards", "practice-test", "students"]
+    }
+  ]
+}

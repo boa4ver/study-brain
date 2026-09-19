@@ -1,11 +1,81 @@
+<p align="center">
+  <a href="#install"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code" /></a>
+  <a href="#other-agents"><img src="https://img.shields.io/badge/Codex_CLI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="Codex CLI" /></a>
+  <a href="#other-agents"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini CLI" /></a>
+  <a href="#other-agents"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" /></a>
+  <a href="#other-agents"><img src="https://img.shields.io/badge/OpenCode-181818?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="OpenCode" /></a>
+</p>
+
+<p align="center">
+  <strong>Your notes. Your teacher's format. One plugin, any agent.</strong>
+  <br />
+  <em>Study material that makes you do the judgment the exam will ask for.</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="License: MIT" />
+  <img src="https://img.shields.io/github/stars/boa4ver/studykit?style=for-the-badge&color=yellow" alt="Stars" />
+  <img src="https://img.shields.io/badge/skills-3-7C3AED?style=for-the-badge" alt="3 skills" />
+  <img src="https://img.shields.io/badge/tests-23_passing-green?style=for-the-badge" alt="23 tests passing" />
+</p>
+
 # studykit
 
-Claude Code skills that turn your own course material into study materials
-shaped to the test you are actually sitting.
+**An agent plugin that turns your own course material into study materials
+shaped to the test you're actually sitting.** Works with Claude Code, Codex CLI,
+Gemini CLI, Cursor, and anything that reads `AGENTS.md`.
 
 Point it at your slides, past papers, and homework. Get back a reviewer, a
 practice test whose answer key explains every wrong option, worked examples that
-do not give away their own answers, and a plan for what to drill next.
+don't give away their own answers, and a plan for what to drill next.
+
+## Features
+
+- 📋 **Reviewers and study guides** built from your real sources, not a summary of them
+- 📝 **Practice tests in your exam's actual format** - MCQ paper gets MCQ practice with real traps
+- 🎯 **Answer keys that explain every distractor** - the wrong option you were tempted by is the lesson
+- 🧮 **Exam-shaped worked examples** - neutral facts, the judgment left to you, the trap named afterwards
+- 🃏 **Gradeable flashcards** with spaced repetition (Leitner, 0/1/3/7/21 days)
+- 📊 **Tells you what to drill next** from which wrong answers you picked, not just your score
+- 📄 **Printable PDFs** in one clean house format, using the Chrome you already have
+- 🌐 **A deployable study site** from a folder of markdown, with an opt-in publish allowlist
+- 📁 **`CLAUDE.md` + `AGENTS.md` templates** so the standards apply to every session in your notes folder
+- ⚡ **One-command setup** - `studykit-init` scaffolds the lot
+- 🔒 **Publishing is opt-in at every step** - allowlist starts empty, deploy starts off, nothing leaks by default
+- 📌 **Never invents a date, a format, or a points value** - unknown stays `TBD`
+
+## Install
+
+```bash
+/plugin marketplace add boa4ver/studykit
+/plugin install studykit
+```
+
+Then set everything up in one command:
+
+```
+/studykit-init
+```
+
+Or just ask - *"help me study for Friday's chapter 8 quiz, here are the
+slides"* - and the right skill loads itself.
+
+## Other agents
+
+The skills are plain `SKILL.md` files, so they are not Claude-specific. Clone
+the repo and each agent picks them up from the file it already looks for:
+
+| Agent | Reads |
+|---|---|
+| **Claude Code** | `.claude-plugin/` + `skills/` |
+| **Codex CLI** | `AGENTS.md`, and `.agents/skills/` natively |
+| **Gemini CLI** | `GEMINI.md` |
+| **Cursor** | `.cursor/rules/studykit.mdc` |
+| **OpenCode / Zed / Amp** | `AGENTS.md` |
+
+Every one of those is generated from `skills/` by
+`node scripts/build-adapters.mjs`, so they cannot drift apart. `skills/` is the
+only place to edit.
 
 ## Why this exists
 
@@ -17,37 +87,29 @@ answers.
 
 That last one is the real problem. A worked example that says *"less the 5,000
 recovered from scrap"* has already made the only decision the question exists to
-test. You read it, you understand it, and you still cannot do the real problem,
+test. You read it, you understand it, and you still can't do the real problem,
 because the real problem never tells you which line is a deduction.
 
 studykit is a set of rules against that. Every rule is here because it went
 wrong first.
 
-## What's in here
+## The skills
 
-| | |
+| Skill | What it does |
 |---|---|
 | **`studykit`** | The study-material skill. Reviewers, practice tests, worked examples, flashcards, and what to drill next. |
-| **`studykit-site`** | Turns a folder of notes into a deployed study site. Sync layer shipped; app in progress - see [Status](#status). |
-| **`templates/`** | `CLAUDE.md` and `AGENTS.md` to drop into your own notes folder, so the standards apply to every session there. |
+| **`studykit-site`** | Turns a folder of notes into a deployed study site. |
+| **`studykit-init`** | One-command setup for both. |
 
----
-
-## studykit
+### studykit
 
 - **Builds a source packet before generating anything**, and tells you what it
-  opened and what it could not. A polished partial reviewer is more dangerous
+  opened and what it couldn't. A polished partial reviewer is more dangerous
   than an openly incomplete one, because it hides its own gaps.
 - **Treats your teacher as outranking the textbook.** Their notation, rounding,
   and scope are what gets marked.
-- **Fixes the scope first** - what's in, what's explicitly out, and what format.
-  An announced format usually names one section, not the whole paper.
-- **Writes worked examples in exam shape** - neutral facts, arbitrary order, the
-  judgment left to you, the trap named afterwards.
-- **Explains every distractor.** An answer key that gives only the letter has
-  taught you nothing. The wrong option you were tempted by is the lesson.
-- **Matches the real format.** An MCQ paper gets MCQ practice with real traps,
-  not open-ended prompts.
+- **Fixes the scope first** - what's in, what's explicitly out, what format. An
+  announced format usually names one section, not the whole paper.
 - **Never builds one subject's test from another subject's template.** Different
   teachers test differently, so borrowed shape is borrowed error.
 - **Flags contradictions instead of silently picking one.** If one lesson lists
@@ -55,27 +117,10 @@ wrong first.
   question.
 - **Separates what your teacher said from what the assistant inferred.** A guess
   presented as fact sends you into a test prepared for the wrong paper.
-- **Respects stated exclusions.** Out-of-scope material is not harmless filler -
+- **Respects stated exclusions.** Out-of-scope material isn't harmless filler -
   it burns study hours that have a deadline attached.
-- **Closes the loop.** Records which wrong option you picked, not just that you
-  missed it, and uses that to pick the next drill.
-- **Renders printable PDFs** in one house format - Georgia, black on white, no
-  monospace, a ruled scope box and a sources line. Uses the Chrome already on
-  your machine, nothing to install.
 
-## Templates
-
-Two files to copy into your notes folder. `CLAUDE.md` covers operations - folder
-map, note format, what publishes, what to verify before asserting. `AGENTS.md`
-covers principles - the standards above, as rules that live in your folder.
-
-They're separate on purpose: operations change when you reorganize, principles
-change when something goes wrong. `AGENTS.md` ends with an empty section for
-your own rules, added with the evidence attached. That section is what makes it
-yours - a rule without its reason gets deleted by the next person who finds it
-inconvenient.
-
-## studykit-site
+### studykit-site
 
 A local daemon watches your notes folder, mirrors **only the folders you
 allowlist** into the site, and redeploys.
@@ -84,51 +129,39 @@ allowlist** into the site, and redeploys.
 notes folder  ->  sync daemon (allowlist + debounce)  ->  site  ->  deploy
 ```
 
-The allowlist is opt-in only - there is no `exclude` list. A new folder is
-private by default and a typo fails closed. Removing a folder from the list and
-re-running **unpublishes** it. The sync refuses a target outside the project,
-because it prunes that directory.
+There's no `exclude` list - the allowlist is opt-in only, so a new folder is
+private by default and a typo fails closed. Removing a folder and re-running
+**unpublishes** it. The sync refuses a target outside the project, because it
+prunes that directory.
 
-### Status
+**Status:** the sync layer, content parser, and scheduling are done and tested
+(23 tests). The Next.js app renders subject pages, notes, a scored practice
+runner with distractor explanations, and flashcard review. Dashboard, calendar,
+assignment manager, and persisted cross-device analytics are **not built yet**.
 
-**Shipped and tested:** the sync layer and the content contract. Verified
-against a fixture vault - private folders are not copied, non-markdown is not
-copied, removal unpublishes, and an out-of-project target is refused.
+### Templates
 
-**Not built yet:** the Next.js app itself - subject pages, practice runner,
-flashcard review, dashboard, calendar, analytics. The contract they'll read is
-specified in [`site/references/content-schema.md`](site/references/content-schema.md);
-the app that reads it is in progress. Don't install this half expecting a site.
+`CLAUDE.md` covers operations - folder map, note format, what publishes, what to
+verify before asserting. `AGENTS.md` covers principles - the standards above, as
+rules that live in your folder.
+
+They're separate on purpose: operations change when you reorganize, principles
+change when something goes wrong. `AGENTS.md` ends with an empty section for
+your own rules, added with the evidence attached. That section is what makes it
+yours - a rule without its reason gets deleted by the next person who finds it
+inconvenient.
 
 ## Pairs with obsidian-second-brain
 
-If you keep your notes in Obsidian, [**obsidian-second-brain**](https://github.com/eugeniughelbur/obsidian-second-brain)
+If you keep notes in Obsidian, [**obsidian-second-brain**](https://github.com/eugeniughelbur/obsidian-second-brain)
 is the natural companion. It handles the vault as persistent memory - semantic
 search, notes that rewrite themselves as things change, scheduled maintenance.
 studykit handles what happens when there's a test on Friday.
 
-They work on the same plain-markdown vault and neither requires the other.
-Install both if you want the vault to stay current *and* turn into practice
-material. Separate project, separately maintained, MIT like this one.
-
-## Install
-
-```bash
-git clone https://github.com/boa4ver/studykit ~/.claude/skills/studykit
-```
-
-Then in Claude Code:
-
-```
-/studykit
-```
-
-Or just ask - "help me study for Friday's chapter 8 quiz, here are the slides" -
-and the skill loads itself.
+Same plain-markdown vault, neither requires the other. Separate project,
+separately maintained, MIT like this one.
 
 ## Use
-
-Hand it material and tell it what you're preparing for.
 
 ```
 I have a business math quarterly exam on the 15th. Scope is the nine
@@ -147,14 +180,7 @@ What should I drill?
 ```
 
 Files are the default input and always work. Google Classroom is an optional
-upgrade if you have an integration set up - see
-[`references/classroom-input.md`](references/classroom-input.md).
-
-## Printable output
-
-```bash
-node scripts/render-pdf.mjs reviewer.html reviewer.pdf
-```
+upgrade if you have an integration set up.
 
 ## What it will not do
 
@@ -166,29 +192,19 @@ node scripts/render-pdf.mjs reviewer.html reviewer.pdf
 - Build a profile of a named teacher from covert recordings. It uses what your
   teacher actually handed out - posted past papers, stated scope, rubrics,
   graded returns. That's the useful evidence anyway.
-- Guess a test date or format to fill in a template. Unknown stays `TBD`.
+- Guess a test date, format, or points value to fill a template.
 - Publish anything outside the allowlist.
 
 ## Layout
 
 ```
-SKILL.md                          the method and the workflow
-references/study-notes.md         reviewers, study guides, cheat sheets
-references/practice-design.md     practice tests, distractors, flashcards
-references/pdf-format.md          the house format for printables
-references/adaptive-loop.md       what to drill next, from real results
-references/classroom-input.md     optional Google Classroom input
-assets/reviewer.css               the house stylesheet
-assets/reviewer-template.html     reference implementation
-scripts/render-pdf.mjs            HTML to PDF, no dependencies
-
-templates/CLAUDE.md               operations, for your own notes folder
-templates/AGENTS.md               principles, for your own notes folder
-
-site/SKILL.md                     the study-site skill
-site/references/content-schema.md the frontmatter the site reads
-site/references/deploy.md         sync config, verification, deploy
-site/scripts/                     sync library, one-shot sync, watcher
+.claude-plugin/plugin.json          the plugin manifest
+skills/studykit/                    the study-material skill
+skills/studykit-site/               the study-site skill
+  template/                         the Next.js app
+  scripts/                          sync library, one-shot sync, watcher
+skills/studykit-init/               one-command setup
+templates/                          CLAUDE.md and AGENTS.md for your notes folder
 ```
 
 ## License

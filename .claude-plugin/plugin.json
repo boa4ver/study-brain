@@ -1,0 +1,28 @@
+{
+  "name": "studykit",
+  "description": "Turn your own course material into study materials shaped to the test you are actually sitting. Reviewers, practice tests whose answer keys explain every wrong option, exam-shaped worked examples, gradeable flashcards, and a deployable study site.",
+  "version": "0.2.0",
+  "author": {
+    "name": "boa4ver"
+  },
+  "homepage": "https://github.com/boa4ver/studykit",
+  "repository": "https://github.com/boa4ver/studykit",
+  "license": "MIT",
+  "keywords": [
+    "study",
+    "studying",
+    "revision",
+    "exam-prep",
+    "practice-test",
+    "flashcards",
+    "spaced-repetition",
+    "reviewer",
+    "study-guide",
+    "obsidian",
+    "notes",
+    "students",
+    "claude-code",
+    "skills"
+  ],
+  "skills": "./skills/"
+}

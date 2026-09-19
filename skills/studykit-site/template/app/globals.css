@@ -1,0 +1,69 @@
+:root {
+  --ink: #111;
+  --muted: #666;
+  --line: #e2e2e2;
+  --bg: #fff;
+  --accent: #111;
+  --right: #1a7f37;
+  --wrong: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ececec;
+    --muted: #9a9a9a;
+    --line: #2d2d2d;
+    --bg: #121212;
+    --accent: #ececec;
+    --right: #4ac26b;
+    --wrong: #f08a84;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.5;
+}
+
+.wrap { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+
+a { color: inherit; }
+h1 { font-size: 1.9rem; margin: 0 0 .2rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .5rem; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+.muted { color: var(--muted); font-size: .9rem; }
+
+nav.top { border-bottom: 1px solid var(--line); margin-bottom: 2rem; padding-bottom: .75rem; display: flex; gap: 1.25rem; font-size: .95rem; }
+
+ul.list { list-style: none; padding: 0; margin: .5rem 0; }
+ul.list li { padding: .6rem 0; border-bottom: 1px solid var(--line); }
+ul.list li:last-child { border-bottom: none; }
+
+.badge { font-size: .75rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .1rem .5rem; margin-left: .4rem; }
+
+button {
+  font: inherit;
+  background: none;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  padding: .55rem .9rem;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: default; }
+
+.choice { display: block; width: 100%; text-align: left; margin: .4rem 0; }
+.choice.correct { border-color: var(--right); }
+.choice.chosen-wrong { border-color: var(--wrong); }
+
+.explain { border-left: 3px solid var(--line); padding: .3rem 0 .3rem .85rem; margin: .9rem 0; font-size: .95rem; }
+.explain .r { color: var(--right); }
+.explain .w { color: var(--wrong); }
+
+.empty { border: 1px dashed var(--line); padding: 1.5rem; border-radius: .5rem; color: var(--muted); }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
