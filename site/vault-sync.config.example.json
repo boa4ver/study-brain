@@ -1,0 +1,11 @@
+{
+  "source": "~/Documents/Notes",
+  "target": "content/vault",
+  "include": [
+    "Subject One",
+    "Subject Two"
+  ],
+  "debounceSeconds": 20,
+  "deploy": false,
+  "deployCommand": "npx vercel --prod --yes"
+}
