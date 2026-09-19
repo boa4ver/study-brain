@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="License: MIT" />
   <img src="https://img.shields.io/github/stars/boa4ver/study-brain?style=for-the-badge&color=yellow" alt="Stars" />
   <img src="https://img.shields.io/badge/skills-4-7C3AED?style=for-the-badge" alt="4 skills" />
-  <img src="https://img.shields.io/badge/tests-23_passing-green?style=for-the-badge" alt="23 tests passing" />
+  <img src="https://img.shields.io/badge/tests-37_passing-green?style=for-the-badge" alt="37 tests passing" />
 </p>
 
 # study-brain
@@ -206,8 +206,18 @@ assignment manager, and persisted cross-device analytics are **not built yet**.
 
 ### study-brain-classroom
 
-Imports Classroom posts as staged inbox notes, then checks the import actually
-worked:
+Ingests collected Classroom posts into the vault as staged inbox notes, then
+checks the import actually worked:
+
+```bash
+node scripts/ingest.mjs --config=classroom.config.json
+```
+
+Re-running is safe: a note is rewritten only when its post actually changed, and
+only the generated block is replaced — so a `processed: true` you flipped, and
+anything you wrote in the file, survive. Exclusions match the **course name and
+the post title**, because a recurring item posted as a title under an unrelated
+course defeats a course-only filter.
 
 ```bash
 node scripts/health-check.mjs <inbox-dir>

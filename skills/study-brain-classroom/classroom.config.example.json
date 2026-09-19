@@ -1,0 +1,12 @@
+{
+  "eventsDir": "~/Library/Application Support/study-brain/classroom/events",
+  "vault": "~/Documents/Notes",
+  "inboxPath": "_System/Classroom Inbox",
+  "courses": {
+    "Accounting": ["fabm", "accounting"],
+    "Maths": ["math", "calculus"]
+  },
+  "exclude": [
+    ["weekly", "reflection"]
+  ]
+}

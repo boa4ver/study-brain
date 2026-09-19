@@ -18,17 +18,57 @@ ship its own OAuth. If nothing is connected, say so plainly and fall back to the
 student handing over files. Do not walk them through an OAuth setup they did not
 ask for.
 
-## Step 1 - Import
+## Step 1 - Collect
 
-Pull announcements, assignments, and materials for the courses in scope. Write
-each post as one inbox note, per `references/inbox-format.md`.
+Get the posts onto disk as `<eventsDir>/<id>/event.json`, with an optional
+`page.json` holding captured text and attachments. Any collector works -
+Classroom notification mail, an MCP server, a connector, the student's own
+script. This skill does not care where events come from.
 
-**Respect the exclusion list.** If the student has asked for a course to be
-left out, match it by **course name *and* post title**. A recurring item is
-sometimes posted as a *title* under an unrelated course, and a filter that
-checks only the course field will let it through. That has happened.
+```json
+{
+  "id": "m1",
+  "type": "material",
+  "course": "FABM 2",
+  "teacher": "Sir N",
+  "title": "Chapter 9 materials",
+  "body": "Outline attached.",
+  "receivedAt": "2026-09-11T08:00:00Z",
+  "source": "mail",
+  "url": "https://classroom.google.com/c/abc"
+}
+```
 
-## Step 2 - Check the import actually worked
+## Step 2 - Ingest
+
+```bash
+node scripts/ingest.mjs --config=classroom.config.json
+```
+
+Copy `classroom.config.example.json` and set `vault`, `eventsDir`, the
+`courses` keyword map, and `exclude`.
+
+Re-running is safe. A note is rewritten only when its event or page actually
+changed, and only the generated block is replaced - so **a `processed: true`
+you flipped, and any notes you wrote in the file, survive re-ingest**. Without
+that, every run would quietly reset the one field recording what has already
+been applied.
+
+Ingest also copies attachments into the vault beside the note, refuses any
+attachment path outside the events directory, and deletes archived files the
+post no longer has.
+
+### Exclusions match the title too
+
+`exclude` is a list of term groups; every term in a group must appear, and each
+group is checked against the **course name and the post title**.
+
+Checking the title is not redundant. A recurring item is sometimes posted as a
+*title* under an unrelated course, and a filter that only reads the course field
+lets it straight through. That is exactly how two items once reached a vault
+that was supposed to never see them.
+
+## Step 3 - Check the import actually worked
 
 ```bash
 node scripts/health-check.mjs <inbox-dir>
@@ -66,7 +106,7 @@ So:
   if you tell them the file is missing rather than that it does not exist.
 - **Read the health output, not the exit code of the importer.**
 
-## Step 3 - Apply each post
+## Step 4 - Apply each post
 
 Find the unapplied ones:
 
